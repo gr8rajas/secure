@@ -29,15 +29,6 @@ class webLogTransformations extends Serializable with StrictLogging {
   }
 
 
-  /** This method returns distinct dates inorder to get frequent visitors for each day */
-
-  def distinctDates(filteredData:sql.DataFrame) : Int ={
-
-    val distinctDateCount = filteredData.select("receive_date").distinct().count()
-    distinctDateCount.toInt
-  }
-
-
   /** This method first groups the data and get the host count(number of visited).
     * then applying window analytic function to get the highest count for each group of host and receive date,
     * Now applying one more analytic function to get the top N visitors
@@ -73,3 +64,12 @@ class webLogTransformations extends Serializable with StrictLogging {
 //    val windowSpec = Window.partitionBy("receive_date").orderBy(desc("no_of_times_visited"))
 //    val rankSpec = dense_rank().over(windowSpec)
 //    val denseRankOutput = groupedData.withColumn("dr",rankSpec)
+
+
+///** This method returns distinct dates inorder to get frequent visitors for each day */
+//
+//def distinctDates(filteredData:sql.DataFrame) : Int ={
+//
+//  val distinctDateCount = filteredData.select("receive_date").distinct().count()
+//  distinctDateCount.toInt
+//}

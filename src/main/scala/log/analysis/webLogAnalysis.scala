@@ -9,7 +9,7 @@ object webLogAnalysis extends Serializable {
 
   def main(args: Array[String]): Unit = {
 
-    System.out.println("\n Number of top visitors are you looking for? Default gives top 3 else Please enter \n")
+    System.out.println("\n Number of top visitors are you looking for? \n Just press enter to give top 3 visitors else enter number \n")
 
     val readInput = scala.io.StdIn.readLine()
     val topFrequentVisitor = if (readInput =="") 3 else readInput.toInt
@@ -30,13 +30,12 @@ object webLogAnalysis extends Serializable {
     System.out.println("Parsing and Cleansing the logs \n")
     val webLog = new webLogTransformations
     val logData = webLog.readAndParse(readLogData)
-    val allDates = webLog.distinctDates(logData)
 
     System.out.println("Executing the query \n")
     val output  = webLog.transformData(logData,topFrequentVisitor)
 
     System.out.println("Retrieving Output \n")
-    output.show(allDates * topFrequentVisitor,false)
+    output.show(500,false)
     spark.stop()
   }
 }
