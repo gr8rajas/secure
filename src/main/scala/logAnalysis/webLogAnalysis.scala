@@ -1,4 +1,4 @@
-package log.analysis
+package logAnalysis
 
 import java.io.Serializable
 

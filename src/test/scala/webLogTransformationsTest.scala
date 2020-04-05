@@ -1,3 +1,4 @@
+import logAnalysis.webLogTransformations
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import org.apache.spark.sql
 import org.apache.spark.sql.{Row, SparkSession}
@@ -19,7 +20,7 @@ class webLogTransformationsTest extends FunSuite with BeforeAndAfterAll {
   ).toDF
 
 
-  val logAnalysisTest = new log.analysis.webLogTransformations
+  val logAnalysisTest = new webLogTransformations
   val parseLog : sql.DataFrame = logAnalysisTest.readAndParse(sampleData)
   val transformedLog : sql.DataFrame = logAnalysisTest.transformData(parseLog,2)
 

@@ -1,4 +1,4 @@
-package log.analysis
+package logAnalysis
 
 import com.typesafe.scalalogging.StrictLogging
 import org.apache.spark.sql
