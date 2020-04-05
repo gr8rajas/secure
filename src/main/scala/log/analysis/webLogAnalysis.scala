@@ -11,8 +11,8 @@ object webLogAnalysis extends Serializable {
 
     System.out.println("\n Number of top visitors are you looking for? Default gives top 3 else Please enter \n")
 
-    val readInput = scala.io.StdIn.readInt()
-    val topFrequentVisitor = if (readInput.toString.isEmpty) 5 else readInput
+    val readInput = scala.io.StdIn.readLine()
+    val topFrequentVisitor = if (readInput =="") 3 else readInput.toInt
 
     System.out.println(s"\n Retrieving results for top $topFrequentVisitor \n")
 
@@ -40,5 +40,3 @@ object webLogAnalysis extends Serializable {
     spark.stop()
   }
 }
-
-//    val topFrequentVisitor = if (args.length == 0) 3 else args(0).toInt

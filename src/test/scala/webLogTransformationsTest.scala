@@ -21,7 +21,6 @@ class webLogTransformationsTest extends FunSuite with BeforeAndAfterAll {
 
   val logAnalysisTest = new log.analysis.webLogTransformations
   val parseLog : sql.DataFrame = logAnalysisTest.readAndParse(sampleData)
-  parseLog.count()
   val transformedLog : sql.DataFrame = logAnalysisTest.transformData(parseLog,2)
 
 
