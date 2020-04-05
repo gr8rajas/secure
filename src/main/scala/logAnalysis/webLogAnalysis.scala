@@ -18,6 +18,7 @@ object webLogAnalysis extends Serializable {
 
     val spark = SparkSession.builder.master("local[4]").appName("AnalyzeLogs").getOrCreate()
       spark.conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+      spark.conf.set("spark.sql.shuffle.partitions",10)
       spark.sparkContext.setLogLevel("ERROR")
 
     val dataSource = "ftp://ita.ee.lbl.gov/traces/NASA_access_log_Jul95.gz"
