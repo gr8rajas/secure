@@ -6,7 +6,6 @@ import org.apache.spark.sql.expressions.Window
 
 class webLogTransformations extends Serializable with StrictLogging {
 
-
   /** This method parses Web logs,cleanses and returns standard DataFrame with required Schema */
 
   def readAndParse(logData:sql.DataFrame): sql.DataFrame = {
@@ -50,26 +49,9 @@ class webLogTransformations extends Serializable with StrictLogging {
     val rowNumSpecTop = row_number().over(windowSpecTop)
     val groupedOutput = rowNumOutput.withColumn("top",rowNumSpecTop).where(s"top <=$topFrequentVisitor")
 
-//    val output = groupedOutput.withColumnRenamed("dr","top").orderBy(col("receive_date"),desc("host_count"))
     val output = groupedOutput.orderBy(col("receive_date"),desc("no_of_times_visited"))
 
     output
   }
 
 }
-
-
-
-/** This Window Analytic function returns all visitors with highest  count in descending order */
-//    val windowSpec = Window.partitionBy("receive_date").orderBy(desc("no_of_times_visited"))
-//    val rankSpec = dense_rank().over(windowSpec)
-//    val denseRankOutput = groupedData.withColumn("dr",rankSpec)
-
-
-///** This method returns distinct dates inorder to get frequent visitors for each day */
-//
-//def distinctDates(filteredData:sql.DataFrame) : Int ={
-//
-//  val distinctDateCount = filteredData.select("receive_date").distinct().count()
-//  distinctDateCount.toInt
-//}

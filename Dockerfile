@@ -1,5 +1,4 @@
 #Defining the Environment
-#FROM openjdk:8
 FROM openjdk:8-jre-buster
 
 MAINTAINER Raj
@@ -16,10 +15,11 @@ RUN \
   apt-get install sbt && \
   sbt sbtVersion
 
-WORKDIR /Testing
+#Working Directory
+WORKDIR /Source
 
 #Move SourceCode to BaseImage
 ADD . .
 
-#Run the program to retrieve the Frequent Visitors, by default retrieves top 3 frequent Visitors
+#Run the program to retrieve the Frequent Visitors, by default if pressed Enter, retrieves top 3 frequent Visitors
 CMD sbt run
