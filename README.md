@@ -10,9 +10,7 @@ Install Docker on your Machine
 
 https://www.docker.com/products/docker-desktop
 
-### The Docker Image for this project is in the below path
-
-To run the image on your machine
+### To run the Docker Image on your machine
 
 Pull the image from Docker Hub
 
